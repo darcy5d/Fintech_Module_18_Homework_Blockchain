@@ -51,6 +51,11 @@ import hashlib
 # `amount` attributes
 # YOUR CODE HERE
 
+@dataclass
+class Record:
+    sender: str
+    receiver: str
+    amount: float
 
 ################################################################################
 # Step 2:
