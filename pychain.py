@@ -151,12 +151,16 @@ class PyChain:
 
 # We can do this a slightly different way though, buy using our new format for a genesis block.
 # With sender = "Genesis", receiver = "Genesis" and the amount = 0.
-@st.cache(allow_output_mutation=True)
+# Firstly, do an extremely basic check to see if there is a genesis block and that that sender was "Genesis"
+
+def validate_chain(chain):
+    return isinstance(chain, Pychain) and chain[0].record.sender == "Genesis"
+
+@st.cache_resource
 def setup():
     print("Initializing Chain")
     genesis_record = Record(sender="Genesis", receiver="Genesis", amount=0)
     return PyChain([Block(genesis_record, 0)])
-
 
 st.markdown("# PyChain")
 st.markdown("## Store a Transaction Record in the PyChain")
@@ -201,9 +205,9 @@ if st.button("Add Block"):
     # Update `new_block` so that `Block` consists of an attribute named `record`
     # which is set equal to a `Record` that contains the `sender`, `receiver`,
     # and `amount` values
-    new_record 
+    new_record = Record(sender=sender, receiver=receiver, amount=amount)
     new_block = Block(
-        data=input_data,
+        record=new_record,
         creator_id=42,
         prev_hash=prev_block_hash
     )
