@@ -73,7 +73,7 @@ class Block:
 
     # @TODO
     # Rename the `data` attribute to `record`, and set the data type to `Record`
-    data: Any
+    record: Record
 
     creator_id: int
     prev_hash: str = "0"
@@ -143,11 +143,19 @@ class PyChain:
 
 # Adds the cache decorator for Streamlit
 
+## I have changed the code here a little bit, see below
+# @st.cache(allow_output_mutation=True)
+# def setup():
+#     print("Initializing Chain")
+#     return PyChain([Block("Genesis", 0)])
 
-@st.cache(allow_output_mutation=True)
-def setup():
-    print("Initializing Chain")
-    return PyChain([Block("Genesis", 0)])
+# We can do this a slightly different way though, buy using our new format for a genesis block.
+# With sender = "Genesis", receiver = "Genesis" and the amount = 0.
+# @st.cache(allow_output_mutation=True)
+# def setup():
+#     print("Initializing Chain")
+#     genesis_record = Record(sender="Genesis", receiver="Genesis", amount=0)
+#     return PyChain([Block(genesis_record, 0)])
 
 
 st.markdown("# PyChain")
