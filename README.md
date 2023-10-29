@@ -3,7 +3,7 @@ A repo for my homework assignment for Module 18 - Blockchain
 
 # PyChain Ledger
 
-The PyChain Ledger is an implementation of a basic blockchain ledger, developed using Python and visualized using Streamlit. The goal of the project was to further understand the architecture of blockchains by building a rudimentary version and enabling basic transactions.
+The PyChain Ledger is an implementation of a basic blockchain ledger, developed using Python and visualised using Streamlit. The goal of the project was to further understand the architecture of blockchains by building a rudimentary version and enabling basic transactions.
 
 A full video of the streamlit interface is [available on Vimeo ](https://vimeo.com/879074527)
 
