@@ -151,11 +151,11 @@ class PyChain:
 
 # We can do this a slightly different way though, buy using our new format for a genesis block.
 # With sender = "Genesis", receiver = "Genesis" and the amount = 0.
-# @st.cache(allow_output_mutation=True)
-# def setup():
-#     print("Initializing Chain")
-#     genesis_record = Record(sender="Genesis", receiver="Genesis", amount=0)
-#     return PyChain([Block(genesis_record, 0)])
+@st.cache(allow_output_mutation=True)
+def setup():
+    print("Initializing Chain")
+    genesis_record = Record(sender="Genesis", receiver="Genesis", amount=0)
+    return PyChain([Block(genesis_record, 0)])
 
 
 st.markdown("# PyChain")
@@ -179,19 +179,19 @@ pychain = setup()
 
 # @TODO:
 # Delete the `input_data` variable from the Streamlit interface.
-input_data = st.text_input("Block Data")
+
 
 # @TODO:
 # Add an input area where you can get a value for `sender` from the user.
-# YOUR CODE HERE
+sender = st.text_input("Sender")
 
 # @TODO:
 # Add an input area where you can get a value for `receiver` from the user.
-# YOUR CODE HERE
+recevier = st.text_input("Receiver")
 
 # @TODO:
 # Add an input area where you can get a value for `amount` from the user.
-# YOUR CODE HERE
+amount = st.number_input("Amount", min_value=0.01, step=0.01)
 
 if st.button("Add Block"):
     prev_block = pychain.chain[-1]
@@ -201,6 +201,7 @@ if st.button("Add Block"):
     # Update `new_block` so that `Block` consists of an attribute named `record`
     # which is set equal to a `Record` that contains the `sender`, `receiver`,
     # and `amount` values
+    new_record 
     new_block = Block(
         data=input_data,
         creator_id=42,
